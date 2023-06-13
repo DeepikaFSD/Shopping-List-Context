@@ -122,8 +122,6 @@ header h1 {
   cursor: pointer;
 }
 
-
-
 .list-items
 {
   display: flex;
@@ -134,24 +132,34 @@ header h1 {
   padding: 10px 15px;
   margin: 0 5px 20px;
   font-weight: 700;
-  cursor: pointer;
-  
+  cursor: pointer;  
 }
 
-.edit {
-  position: relative;
-  cursor: pointer;
-  background: none;
-  border: none;
+.button-group {
+  display: flex;
 }
-.close{
-  position: relative;
-  margin-left: auto;
+
+.edit-button,
+.close-button {
   padding: 5px;
+  margin-left: 5px;
   cursor: pointer;
   background: none;
   border: none;
 }
+
+.shopimg
+{
+  background-image: url(/Images/shopping-list-thumbnail.png);
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 120px;
+  }
+
+  .list-container {
+    display: flex;
+    flex-direction: column; /* To stack items vertically */
+  }
 
 
 

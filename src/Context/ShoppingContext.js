@@ -6,9 +6,7 @@ const ShoppingContext = createContext();
 
 
 export const  ShoppingProvider = ({ children }) => {
-  const [items, setItems] = useState([
-  ]);
-
+  const [items, setItems] = useState([]);
   const [editItem, setEditItem] = useState(null);
   const [filter, setFilter] = useState('');
 

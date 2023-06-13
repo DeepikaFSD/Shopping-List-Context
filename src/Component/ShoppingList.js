@@ -1,4 +1,4 @@
-import React, { useContext,useEffect,useState } from 'react';
+import React, { useContext,useState } from 'react';
 import ShoppingContext from '../Context/ShoppingContext';
 import {FaTimes, FaEdit,FaPlus} from 'react-icons/fa';
 
@@ -13,7 +13,7 @@ function ShoppingList() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (inputValue.trim() === '') {
+    if (inputValue === '') {
       alert('Please enter an item name');
       return;
     }
@@ -28,8 +28,7 @@ function ShoppingList() {
       addItem(inputValue);
       setInputValue('');
     }
-  };
-  
+  }; 
   
 // handle edit
   const handleEdit = (item) => {
@@ -50,11 +49,11 @@ function ShoppingList() {
   clearList();
   handleClearFilter();
   };
-   
 
   return (
     <div className='container'>
         <><header className='header'>
+        <div className='shopimg'/>
     <h1>Shopping List</h1>
 </header>
 <form id="item-form" onSubmit={handleSubmit}>
@@ -79,38 +78,33 @@ function ShoppingList() {
      <div className="filter">
      <input
        type="text"
-       class="form-input-filter"
+       className="form-input-filter"
        id="filter"
        placeholder="Filter Items"
        value={filter}
        onChange={handleFilterChange}
      />
    </div>
-  
-   <ul id="item-list" className="items">
+   <ul id="list-container" className='items'> 
       {items.map((item) => (
          filteredItems.includes(item) && 
-        <><li key={item.id}>{item.itemName}{filteredItems.includes(item)}
-        <button onClick={() => handleDelete(item.id)} className='close'>
-        <FaTimes color="purple"/>
-            </button>
-         <button className='edit' onClick={() => handleEdit(item)}>
+        <><li id="item-list" key={item.id}>{item.itemName}
+         <div class="button-group">
+        <button className='edit-button' onClick={() => handleEdit(item)}>
          <FaEdit color='purple'/>
             </button>
+        <button  className='close-button' onClick={() => handleDelete(item.id)} >
+        <FaTimes color="purple"/>
+            </button>
+            </div>
         </li>
          </>
       ))}
     </ul>
-
-   
-    
-  
-  <button id="clear" className="btn-clear" onClick={handleClear}>clear All</button>
-  
+  <button id="clear" className="btn-clear" onClick={handleClear}>Clear All</button>
 </>      
 </div>  
   );
-      
-      }
+}
 
 export default  ShoppingList;
